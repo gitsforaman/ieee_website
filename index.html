@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="IEEE Student Chapter at Your College - Inspiring innovation and empowering students through technology and leadership.">
+  <meta name="keywords" content="IEEE, student chapter, technology, engineering, innovation, Your College">
+  <meta property="og:title" content="IEEE Student Chapter - Your College">
+  <meta property="og:description" content="Join our vibrant community of tech enthusiasts and future leaders.">
+  <meta property="og:image" content="https://yourcollege.edu/ieee-logo.jpg">
+  <meta property="og:url" content="https://yourcollege.edu/ieee">
+  <title>IEEE Student Chapter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-blue: #1E40AF;
+      --secondary-blue: #1E3A8A;
+      --accent-teal: #2DD4BF;
+      --accent-coral: #F472B6;
+      --light-bg: #F9FAFB;
+      --text-dark: #111827;
+      --text-light: #FFFFFF;
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Preloader */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--primary-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      transition: opacity 0.5s ease;
+    }
+
+    #preloader.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .preloader-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid var(--accent-teal);
+      border-top: 4px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    header {
+      background: black;
+      color: var(--text-light);
+      padding: 1.5rem 1rem;
+      text-align: center;
+      position: relative;
+      z-index: 1000;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 80px;
+      background: url('https://www.svgrepo.com/show/2046/wave.svg') no-repeat center bottom;
+      background-size: cover;
+      bottom: -40px;
+      left: 0;
+      opacity: 0.15;
+    }
+
+    header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.85;
+    }
+
+    nav {
+      background: var(--secondary-blue);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-container {
+      max-width: 1300px;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      margin: 0.5rem 1rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-teal);
+    }
+
+    nav a::after {
+      content: '';
+      display: block;
+      height: 3px;
+      width: 0;
+      background: var(--accent-teal);
+      transition: width 0.3s ease;
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      color: var(--text-light);
+      cursor: pointer;
+      padding: 0.5rem;
+      position: absolute;
+      right: 1rem;
+      top: 0.5rem;
+    }
+
+    #hero {
+      position: relative;
+      width: 100%;
+      height: 60vh;
+      overflow: hidden;
+      background: var(--primary-blue);
+    }
+
+    .hero-slider {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.7s ease-in-out;
+    }
+
+    .hero-slide {
+      flex: 0 0 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--text-light);
+      position: relative;
+      transform: translateY(20px);
+      opacity: 0.8;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .hero-slide.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .hero-slide::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 90%;
+      padding: 1.5rem;
+      transform: translateY(20px);
+      opacity: 0;
+      animation: slideUp 1s ease forwards 0.3s;
+    }
+
+    @keyframes slideUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .hero-content h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-content p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.9;
+    }
+
+    .hero-content a {
+      background: var(--accent-coral);
+      color: var(--text-light);
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      display: inline-block;
+    }
+
+    .hero-content a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      background: #EC4899;
+    }
+
+    .slider-controls {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 3;
+    }
+
+    .slider-controls button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid var(--text-light);
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .slider-controls button.active {
+      background: var(--accent-teal);
+      border-color: var(--accent-teal);
+      transform: scale(1.2);
+    }
+
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.6);
+      color: var(--text-light);
+      border: none;
+      padding: 0.8rem 1.2rem;
+      cursor: pointer;
+      font-size: 1.5rem;
+      z-index: 3;
+      transition: background 0.3s ease;
+    }
+
+    .slider-nav:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .slider-nav.prev {
+      left: 10px;
+    }
+
+    .slider-nav.next {
+      right: 10px;
+    }
+
+    section {
+      padding: 3rem 1rem;
+      max-width: 1300px;
+      margin: auto;
+      position: relative;
+      background: linear-gradient(to bottom, #ffffff, var(--light-bg));
+      overflow: hidden;
+    }
+
+    h2 {
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--primary-blue);
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 4px;
+      background: var(--accent-teal);
+      margin: 0.5rem auto;
+      border-radius: 4px;
+    }
+
+    .event-card, .blog-post, .faq-item, .social-post {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .event-card:hover, .blog-post:hover, .faq-item:hover, .social-post:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .event-card::before, .blog-post::before, .faq-item::before, .social-post::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--accent-teal);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .event-card:hover::before, .blog-post:hover::before, .faq-item:hover::before, .social-post:hover::before {
+      transform: scaleX(1);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .team-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .team-card img {
+      border-radius: 50%;
+      width: 200px;
+      height: 220px;
+      object-fit: fill;
+      margin-bottom: 1rem;
+      border: 3px solid black;
+      transition: transform 0.3s ease;
+    }
+
+    .team-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .team-card h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.3rem;
+      color: var(--primary-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .team-card p {
+      font-size: 0.9rem;
+      color: #4a4a4a;
+      margin-bottom: 0.5rem;
+    }
+
+    .team-card p.email {
+      font-size: 0.85rem;
+      color: var(--accent-coral);
+      font-weight: 5000;
+    }
+
+    .team-card p.member-id {
+      font-size: 0.85rem;
+      color: #1E293B;
+      font-weight: 5000;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      object-fit: cover;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox.show {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox img {
+      max-width: 95%;
+      max-height: 95%;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      animation: zoomIn 0.3s ease;
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    form {
+      max-width: 100%;
+      margin: 1.5rem auto;
+      padding: 0 1rem;
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 1.2rem;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 0.9rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      background: #fff;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    form input:focus, form textarea:focus {
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 8px rgba(30, 64, 175, 0.2);
+      outline: none;
+    }
+
+    form label {
+      position: absolute;
+      top: 0.9rem;
+      left: 0.9rem;
+      font-size: 0.95rem;
+      color: #666;
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    form input:focus + label,
+    form input:not(:placeholder-shown) + label,
+    form textarea:focus + label,
+    form textarea:not(:placeholder-shown) + label {
+      top: -0.6rem;
+      left: 0.6rem;
+      font-size: 0.8rem;
+      color: var(--primary-blue);
+      background: #fff;
+      padding: 0 0.2rem;
+    }
+
+    form button {
+      background: var(--primary-blue);
+      color: var(--text-light);
+      padding: 0.9rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 200px;
+      margin: 0.5rem auto;
+      display: block;
+    }
+
+    form button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      background: var(--accent-coral);
+    }
+
+    form button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* FAQ Section Styles */
+    .faq-item {
+      cursor: pointer;
+    }
+
+    .faq-item summary {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--primary-blue);
+      padding: 1rem;
+      border-bottom: 2px solid #e0e0e0;
+      transition: color 0.3s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.5rem;
+      color: var(--accent-teal);
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item[open] summary::after {
+      content: '−';
+      transform: rotate(180deg);
+    }
+
+    .faq-item summary:hover {
+      color: var(--accent-coral);
+    }
+
+    .faq-item p {
+      padding: 1rem;
+      font-size: 0.95rem;
+      color: #333;
+      line-height: 1.7;
+    }
+
+    /* Student Branch Code Styles */
+    .branch-code {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+      margin: 1.5rem auto;
+      max-width: 90%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .branch-code:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .branch-code strong {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
+      color: var(--primary-blue);
+    }
+
+    .branch-code span {
+      font-size: 1.1rem;
+      color: var(--accent-teal);
+      font-weight: 600;
+    }
+
+    /* Social Feed Styles */
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .social-post img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      max-height: 200px;
+    }
+
+    .social-post p {
+      font-size: 0.9rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .social-post a {
+      color: var(--accent-coral);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .social-post a:hover {
+      color: var(--accent-teal);
+    }
+
+    footer {
+      background: linear-gradient(135deg, var(--secondary-blue), #1E293B);
+      color: var(--text-light);
+      padding: 3rem 1rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.svgrepo.com/show/2046/wave.svg') no-repeat center top;
+      background-size: cover;
+      opacity: 0.1;
+      z-index: 0;
+    }
+
+    footer .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1300px;
+      margin: auto;
+      position: relative;
+      z-index: 1;
+      gap: 1.5rem;
+    }
+
+    footer h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: var(--accent-teal);
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    footer ul li {
+      margin: 0.5rem 0;
+    }
+
+    footer ul li a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    footer ul li a:hover {
+      color: var(--accent-coral);
+    }
+
+    footer .socials a {
+      color: var(--text-light);
+      font-size: 1.5rem;
+      margin: 0 10px;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    footer .socials a:hover {
+      color: var(--accent-teal);
+      transform: scale(1.2);
+    }
+
+    footer .copyright {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: #D1D5DB;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Hamburger Menu Styles */
+    .nav-container.collapsed {
+      display: none;
+    }
+
+    .nav-container.active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: var(--secondary-blue);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      padding: 1rem 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 0.95rem;
+      }
+      .hero-content h2 {
+        font-size: 1.8rem;
+      }
+      .hero-content p {
+        font-size: 0.9rem;
+      }
+      .hero-content a {
+        padding: 0.7rem 1.8rem;
+        font-size: 0.9rem;
+      }
+      section {
+        padding: 2.5rem 1rem;
+      }
+      h2 {
+        font-size: 1.8rem;
+      }
+      .team-card img {
+        width: 100px;
+        height: 100px;
+      }
+      .team-card h3 {
+        font-size: 1.2rem;
+      }
+      .team-card p {
+        font-size: 0.85rem;
+      }
+      .team-card p.email, .team-card p.member-id {
+        font-size: 0.8rem;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      .social-grid {
+        grid-template-columns: 1fr;
+      }
+      form input, form textarea {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+      }
+      form label {
+        font-size: 0.9rem;
+      }
+      form button {
+        padding: 0.8rem 1.8rem;
+        font-size: 0.9rem;
+      }
+      .faq-item summary {
+        font-size: 1rem;
+        padding: 0.8rem;
+      }
+      .faq-item p {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+      }
+      .branch-code {
+        padding: 0.8rem;
+      }
+      .branch-code strong {
+        font-size: 1.1rem;
+      }
+      .branch-code span {
+        font-size: 1rem;
+      }
+      .social-post img {
+        max-height: 180px;
+      }
+      .social-post p {
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      header p {
+        font-size: 0.9rem;
+      }
+      #hero {
+        height: 50vh;
+      }
+      .hero-content h2 {
+        font-size: 1.5rem;
+      }
+      .hero-content p {
+        font-size: 0.85rem;
+      }
+      .hero-content a {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.85rem;
+      }
+      .slider-controls button {
+        width: 10px;
+        height: 10px;
+      }
+      .slider-nav {
+        padding: 0.6rem 1rem;
+        font-size: 1.2rem;
+      }
+      section {
+        padding: 2rem 0.8rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+      h2::after {
+        width: 40px;
+        height: 3px;
+      }
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+      .team-card {
+        padding: 1.2rem;
+      }
+      .team-card img {
+        width: 90px;
+        height: 90px;
+      }
+      .event-card, .blog-post, .faq-item, .social-post {
+        padding: 1.2rem;
+      }
+      .faq-item summary {
+        font-size: 0.95rem;
+        padding: 0.7rem;
+      }
+      .faq-item summary::after {
+        font-size: 1.2rem;
+      }
+      .faq-item p {
+        font-size: 0.85rem;
+        padding: 0.7rem;
+      }
+      .branch-code {
+        padding: 0.7rem;
+        margin: 1rem auto;
+      }
+      .branch-code strong {
+        font-size: 1rem;
+      }
+      .branch-code span {
+        font-size: 0.95rem;
+      }
+      .social-post img {
+        max-height: 160px;
+      }
+      .social-post p {
+        font-size: 0.8rem;
+      }
+      .hamburger {
+        display: block;
+      }
+      .nav-container {
+        display: none;
+      }
+      .nav-container.active {
+        display: flex;
+      }
+      nav a {
+        margin: 0.5rem 0;
+        font-size: 0.95rem;
+      }
+      footer h3 {
+        font-size: 1.2rem;
+      }
+      footer ul li a {
+        font-size: 0.85rem;
+      }
+      footer .socials a {
+        font-size: 1.3rem;
+        margin: 0 8px;
+      }
+      footer .copyright {
+        font-size: 0.8rem;
+      }
+      #back-to-top {
+        bottom: 20px;
+        right: 20px;
+        padding: 0.8rem;
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="preloader">
+    <div class="preloader-spinner"></div>
+  </div>
+
+  <header role="banner">
+    <h1>Maharishi University of Information Technology  <br>  IEEE Student Chapter </h1>
+    <p>Inspiring Innovation. Empowering Students.</p>
+  </header>
+
+  <nav role="navigation">
+    <button class="hamburger" aria-label="Toggle navigation menu">☰</button>
+    <div class="nav-container collapsed">
+      <a href="#about">About</a>
+      <a href="#team">Team</a>
+      <a href="#events">Events</a>
+      <a href="#membership">Membership</a>
+      <a href="#volunteer">Volunteer</a>
+      <a href="#faq">FAQ</a>
+      <a href="#social-feed">Social Feed</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <section id="hero" role="region" aria-label="Hero Banner">
+    <div class="hero-slider">
+      <div class="hero-slide active" style="background-image: url('https://via.placeholder.com/1200x600?text=IEEE+Event+1');">
+        <div class="hero-content">
+          <h2>CodeFest 2025</h2>
+          <p>Join our annual hackathon to build innovative solutions and win exciting prizes!</p>
+          <a href="#events">Learn More</a>
+        </div>
+      </div>
+      <div class="hero-slide" style="background-image: url('https://via.placeholder.com/1200x600?text=IEEE+Workshop');">
+        <div class="hero-content">
+          <h2>AI & ML Workshop</h2>
+          <p>Dive into the world of Artificial Intelligence with hands-on labs.</p>
+          <a href="#events">Learn More</a>
+        </div>
+      </div>
+      <div class="hero-slide" style="background-image: url('https://via.placeholder.com/1200x600?text=IEEE+Community');">
+        <div class="hero-content">
+          <h2>Join Our Community</h2>
+          <p>Become a part of IEEE and unlock a world of opportunities.</p>
+          <a href="#membership">Join Now</a>
+        </div>
+      </div>
+    </div>
+    <div class="slider-controls">
+      <button data-slide="0" class="active" aria-label="Slide 1"></button>
+      <button data-slide="1" aria-label="Slide 2"></button>
+      <button data-slide="2" aria-label="Slide 3"></button>
+    </div>
+    <button class="slider-nav prev" aria-label="Previous Slide">❮</button>
+    <button class="slider-nav next" aria-label="Next Slide">❯</button>
+  </section>
+
+  <section id="about" role="region" aria-labelledby="about-heading" data-aos="fade-up">
+    <h2 id="about-heading">About Us</h2>
+    <p style="max-width: 90%; margin: auto; font-size: 1rem; line-height: 1.7; color: #333; text-align: center;">
+      The IEEE Student Chapter at Your College is a vibrant community of tech enthusiasts, innovators, and future leaders.
+      We provide a platform for students to explore emerging technologies, develop leadership skills, and collaborate
+      on impactful projects. Through workshops, hackathons, and expert talks, we strive to inspire innovation and nurture
+      excellence.
+    </p>
+    <div class="branch-code" data-aos="zoom-in" aria-label="IEEE Student Branch Code">
+      <strong>Student Branch Code: </strong><span>STB60207287</span>
+    </div>
+  </section>
+
+  <section id="mission-vision" style="background: linear-gradient(to bottom, #E0F2FE, var(--light-bg));" data-aos="fade-up">
+    <h2>Our Mission & Vision</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; align-items: stretch;">
+      <div style="flex: 1; min-width: 250px; background: #fff; padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow); transition: transform 0.3s ease;" data-aos="zoom-in">
+        <h3 style="color: var(--primary-blue); font-size: 1.3rem; margin-bottom: 0.8rem; border-left: 4px solid var(--accent-teal); padding-left: 0.8rem;">🎯 Mission</h3>
+        <p style="font-size: 0.9rem; line-height: 1.6; color: #333;">To empower students with cutting-edge technological exposure and holistic professional development by fostering a culture of innovation, collaboration, and ethical engineering practices.</p>
+      </div>
+      <div style="flex: 1; min-width: 250px; background: #fff; padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow); transition: transform 0.3s ease;" data-aos="zoom-in" data-aos-delay="100">
+        <h3 style="color: var(--primary-blue); font-size: 1.3rem; margin-bottom: 0.8rem; border-left: 4px solid var(--accent-teal); padding-left: 0.8rem;">🚀 Vision</h3>
+        <p style="font-size: 0.9rem; line-height: 1.6; color: #333;">To become a leading student chapter recognized globally for cultivating future technology leaders who drive sustainable change in society through innovation and impact-driven engineering.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="dean" role="region" aria-labelledby="dean-heading" data-aos="fade-up">
+    <h2 id="dean-heading">Our Dean</h2>
+    <div class="team-grid">
+      <div class="team-card" data-aos="zoom-in">
+        <img src="image/dean.jpg" alt="Portrait of Dr. Rajesh Kumar, Dean of Engineering" loading="lazy">
+        <strong><h3>Dr. Kalyan Acharjya</h3>
+        <p>Dean of Engineering</p>
+        <p>MSOET @ MUIT, Lucknow</p>
+        <p class="email">Email: dean.eng@muit.in</p>
+        <p>The Dean of our institution serves as a key pillar of guidance and support for the IEEE Student Chapter. With a deep commitment to academic excellence and innovation, the Dean ensures that all chapter activities align with the institution’s vision and educational standards. Their leadership helps in fostering a culture of research, collaboration, and technical growth among students. By offering strategic direction and administrative support, the Dean plays a crucial role in the smooth functioning and success of various events, initiatives, and partnerships.</p></strong>
+      </div>
+      <div class="team-card" data-aos="zoom-in">
+        <img src="image/dean2.jpg" alt="Portrait of Dr. Rajesh Kumar, Dean of Engineering" loading="lazy">
+        <strong><h3>Dr. Rakesh Kumar Yadav</h3>
+        <p>Dy. Dean of Engineering</p>
+        <p>MSOET @ MUIT, Lucknow</p>
+        <p class="email">Email: rkymuit@gmail.com</p>
+        <p>Working closely alongside, the Deputy Dean (Dy Dean) actively supports the chapter's day-to-day operations and student-led programs. The Deputy Dean assists in coordinating technical workshops, hackathons, and outreach events while providing valuable feedback and mentorship to the team. They help bridge communication between students, faculty advisors, and administration, ensuring that all activities are effectively planned and executed. Their involvement significantly contributes to creating a dynamic, inclusive, and innovation-driven environment within the chapter.</p></strong>
+      </div>
+    </div>
+  </section>
+
+  <section id="faculty-coordinator" role="region" aria-labelledby="faculty-coordinator-heading" data-aos="fade-up">
+    <h2 id="faculty-coordinator-heading">Faculty Coordinator</h2>
+    <div class="team-grid">
+      <div class="team-card" data-aos="zoom-in" aria-label="Dr. Anjali Verma, IEEE Student Branch Counselor, Member ID IEEE2025-001">
+        <img src="image/faculty.webp" alt="Portrait of Dr. Anjali Verma, IEEE Student Branch Counselor" loading="lazy">
+        <strong><h3><strong>Mrs. Preeti Naval</strong></h3>
+        <p>Asst. Professor & IEEE Student Branch faculty-coordinator</p>
+        <p class="email">Email: er.preetinaval09@gmail.com</p>
+        <p class="member-id">Member ID: 101336081</p>
+    <p>The Faculty Counselor acts as the primary academic mentor and guide for the IEEE Student Chapter. Appointed by the institution and recognized by IEEE, the Faculty Counselor serves as a bridge between the student members and the IEEE organization. They provide continuous guidance, ensure that the chapter operates in accordance with IEEE policies, and support students in organizing impactful technical and professional events. The Faculty Counselor plays a key role in nurturing leadership, promoting innovation, and encouraging active student participation in IEEE activities. Their dedication and mentorship are instrumental in the chapter’s growth and success.</p></strong>
+      </div>
+    </div>
+  </section>
+
+  <section id="student-team" role="region" aria-labelledby="student-team-heading" data-aos="fade-up">
+    <h2 id="student-team-heading">Our Student Branch Team</h2>
+    <div class="team-grid">
+      <div class="team-card" data-aos="zoom-in" aria-label="John Doe, Chairperson, Member ID IEEE2025-002">
+        <img src="image/myimage.jpeg" alt="Portrait of John Doe, Chairperson" loading="lazy">
+        <strong><h3>Aman Srivastava</h3>
+        <p>Executive Officer - Chairperson</p>
+        <p class="email">Email: aman.krishna1226@gmail.com</p>
+        <p class="member-id">Member ID: 101124172</p>
+        <p>The Chairperson leads the IEEE Student Chapter with a clear vision and strong leadership. They oversee all chapter activities and ensure every initiative aligns with IEEE’s mission and goals.</p></strong>
+      </div>
+      <div class="team-card" data-aos="zoom-in" data-aos-delay="100" aria-label="Dr. Smith, Faculty Coordinator, Member ID IEEE2025-003">
+        <img src="image/manmohan.jpg" alt="Portrait of Dr. Smith, Faculty Coordinator" loading="lazy">
+        <strong><h3>Manmohan Kushwaha</h3>
+        <p>Vice-Chair</p>
+        <p class="email">Email: manmohan9720.cs@gmail.com</p>
+        <p class="member-id">Member ID: 101169722</p>
+        <p>The Vice Chair supports the Chairperson in managing chapter operations and events. They help coordinate tasks and maintain smooth functioning across all teams.</p></strong>
+      </div>
+      <div class="team-card" data-aos="zoom-in" data-aos-delay="100" aria-label="Dr. Smith, Faculty Coordinator, Member ID IEEE2025-003">
+        <img src="image/purnima.jpg" alt="Portrait of Dr. Smith, Faculty Coordinator" loading="lazy">
+        <h3>Purnima Yadav</h3>
+        <p>Secretary</p>
+        <p class="email">Email: purnimayadav6307266638@gmail.com</p>
+        <p class="member-id">Member ID: 101328452</p>
+        <p>The Secretary manages communications, maintains records, and organizes meetings. They play a key role in ensuring the chapter’s workflow remains efficient and well-documented.</p>
+      </div>
+      <div class="team-card" data-aos="zoom-in" data-aos-delay="100" aria-label="Dr. Smith, Faculty Coordinator, Member ID IEEE2025-003">
+        <img src="image/ayush.jpg" alt="Portrait of Dr. Smith, Faculty Coordinator" loading="lazy">
+       <strong><h3>Ayush Chaurasiya</h3>
+        <p>Webmaster</p>
+        <p class="email">Email: chaurasiyavinod96@gmail.com</p>
+        <p class="member-id">Member ID: 101172349</p>
+        <p>The Webmaster designs and updates the chapter’s digital platforms. They ensure the chapter’s activities and achievements are well-presented and accessible online.</p></strong>
+      </div>
+      <div class="team-card" data-aos="zoom-in" data-aos-delay="100" aria-label="Dr. Smith, Faculty Coordinator, Member ID IEEE2025-003">
+        <img src="image/sumit.jpg" alt="Portrait of Dr. Smith, Faculty Coordinator" loading="lazy">
+        <strong><h3>Sumit Singh</h3>
+        <p>Tresurer</p>
+        <p class="email">Email: sumitsinghfth2003@gmail.com</p>
+        <p class="member-id">Member ID: 101125721</p>
+        <p>The Treasurer handles the financial operations of the chapter. From budgeting events to maintaining transparency, they ensure all funds are used responsibly.</p></strong>
+      </div>
+    </div>
+  </section>
+
+  <section id="wie-members" role="region" aria-labelledby="wie-members-heading" data-aos="fade-up">
+    <h2 id="wie-members-heading">WIE (Women in Engineering)</h2>
+    <div class="team-grid">
+      <div class="team-card" data-aos="zoom-in" aria-label="Priya Sharma, WIE Chair, Member ID IEEE2025-004">
+        <img src="https://via.placeholder.com/140?text=Priya+Sharma" alt="Portrait of Priya Sharma, WIE Chair" loading="lazy">
+        <h3>Priya Sharma</h3>
+        <p>WIE Chair</p>
+        <p class="email">Email: priya@ieee.edu</p>
+        <p class="member-id">Member ID: IEEE2025-004</p>
+        <p>Leading the WIE community with passion and purpose, promoting diversity and inclusion in technology.</p>
+      </div>
+      <div class="team-card" data-aos="zoom-in" data-aos-delay="100" aria-label="Sneha Agarwal, WIE Vice Chair, Member ID IEEE2025-005">
+        <img src="https://via.placeholder.com/140?text=Sneha+Agarwal" alt="Portrait of Sneha Agarwal, WIE Vice Chair" loading="lazy">
+        <h3>Sneha Agarwal</h3>
+        <p>WIE Vice Chair</p>
+        <p class="email">Email: sneha@ieee.edu</p>
+        <p class="member-id">Member ID: IEEE2025-005</p>
+        <p>Working towards creating a supportive platform for aspiring women engineers and innovators.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="events" role="region" aria-labelledby="events-heading" data-aos="fade-up">
+    <h2 id="events-heading">Events</h2>
+    <div class="event-card" data-aos="zoom-in">
+      <strong>IEEE Day Celebraton 2024</strong><br>
+      Date: 1st to 3rd October, 2024<br>
+      <p>IEEE Day marks the anniversary of the first time IEEE members gathered to share their technical ideas in 1884. Celebrated worldwide, it honors innovation, collaboration, and the power of technology for the betterment of humanity. Our IEEE Student Chapter celebrates this special day with enthusiasm through technical workshops, speaker sessions, competitions, and cultural activities, encouraging students to engage, innovate, and connect with the global IEEE community. It serves as a platform to showcase creativity, teamwork, and the true spirit of engineering</p>
+    </div>
+    <div class="event-card" data-aos="zoom-in" data-aos-delay="100">
+      <strong>Codethon 2025</strong><br>
+      Date: 16th & 17th April, 2025<br>
+      <p>Codethon 2025 is a flagship coding hackathon organized by our IEEE Student Chapter, designed to ignite innovation, problem-solving, and technical excellence among budding developers. This 24-hour coding challenge brings together talented students from diverse backgrounds to collaborate, compete, and create impactful solutions to real-world problems. With exciting themes, mentorship sessions, and industry interaction, Codethon 2025 aims to foster creativity, teamwork, and hands-on experience in software development. It is more than a competition — it’s a celebration of code, collaboration, and community.</p>
+    </div>
+  </section>
+
+  <section id="membership" role="region" aria-labelledby="membership-heading" data-aos="fade-up">
+    <h2 id="membership-heading">Membership</h2>
+    <p style="max-width: 90%; margin: auto; text-align: justify; font-size: 1rem; line-height: 1.7;">
+     Becoming an IEEE member connects you to the world’s largest professional organization dedicated to advancing technology. IEEE membership provides access to a global network of over 400,000 engineers, researchers, and technology leaders. Students gain opportunities to participate in conferences, workshops, technical societies, and exclusive competitions like hackathons and project expos. Members receive access to IEEE Xplore digital library, cutting-edge research papers, career resources, and technical publications. Student members also benefit from leadership development, professional certifications, discounted IEEE events, scholarships, and the chance to collaborate with like-minded peers globally. Membership is open to students from all branches who are passionate about innovation, technology, and learning. By joining IEEE, you not only enhance your technical knowledge but also strengthen your career prospects and become part of a prestigious global community committed to advancing engineering and technology for humanity.
+    </p>
+    <ul style="max-width: 90%; margin: 1.5rem auto; list-style: none; text-align: center;">
+      <li style="margin: 0.5rem 0; text-align: justify;"><strong>🌐 Global Networking –</strong> Connect with over 400,000 members worldwide across industries, academia, and research.</li>
+      <li style="margin: 0.5rem 0; text-align: justify;"><strong>📚 Access to Knowledge –</strong> Get exclusive access to IEEE Xplore, research papers, journals, magazines, and standards.</li>
+      <li style="margin: 0.5rem 0; text-align: justify;"><strong>💼 Career Development –</strong> Enhance your resume through certifications, leadership roles, internships, and job portals.</li>
+      <li style="margin: 0.5rem 0; text-align: justify;"><strong>💡 Technical Exposure –</strong> Participate in workshops, conferences, webinars, competitions, and project showcases.</li>
+      <li style="margin: 0.5rem 0; text-align: justify;"><strong>🎓 Scholarships & Awards –</strong> Apply for IEEE scholarships, travel grants, and student recognition awards.</li>
+      <li style="margin: 0.5rem 0; text-align: justify;"><strong>🛠️ Hands-on Experience –</strong> Gain practical skills through hackathons, codethons, technical fests, and IEEE societies.</li>
+      <li style="margin: 0.5rem 0; text-align: justify;"><strong>👥 Leadership Opportunities –</strong> Hold core team positions, organize events, and develop management and teamwork skills.</li>
+      <li style="margin: 0.5rem 0; text-align: justify;"><strong>💬 Mentorship & Guidance –</strong> Learn from industry experts, faculty mentors, and senior IEEE members.</li>
+      <li style="margin: 0.5rem 0; text-align: justify;"><strong>🧠 Society Memberships –</strong> Join specialized IEEE societies like RAS, PES, CS, WIE, etc., based on your interests.</li>
+      <li style="margin: 0.5rem 0; text-align: justify;"><strong>🎖️ Prestige & Recognition –</strong> Be part of a globally respected organization that advances technology for humanity.</li>
+    </ul>
+    <p style="text-align: center;">
+      <a href="https://www.ieee.org/membership" target="_blank" style="background: var(--accent-coral); color: var(--text-light); padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: background 0.3s ease;">Click here to join IEEE</a>
+    </p>
+  </section>
+
+  <section id="volunteer" role="region" aria-labelledby="volunteer-heading" data-aos="fade-up">
+    <h2 id="volunteer-heading">Become a Volunteer</h2>
+    <p style="max-width: 90%; margin: auto; text-align: justify; font-size: 1rem; line-height: 1.7;">
+      Volunteering with the IEEE Student Chapter is more than just a role — it’s an opportunity to be part of a vibrant, innovative, and impactful community. As a volunteer, you’ll play an active part in organizing technical events, seminars, workshops, and social outreach programs. It allows you to develop essential soft skills like communication, leadership, and teamwork while gaining practical exposure to event planning and execution. Whether you’re passionate about technology, design, public relations, or management, volunteering gives you the platform to explore your interests and grow both personally and professionally. Volunteers are recognized for their efforts through certificates, recommendation letters, and exclusive IEEE opportunities.
+    </p>
+    <ul style="max-width: 90%; margin: 1.5rem auto; list-style: none; text-align: center;">
+      <li style="margin: 0.5rem 0; text-align: justify;">🤝 Work closely with peers, faculty, and industry professionals</li>
+      <li style="margin: 0.5rem 0; text-align: justify;">🛠️ Get hands-on experience in organizing events and workshops</li>
+      <li style="margin: 0.5rem 0; text-align: justify;">🧠 Improve your technical, leadership, and communication skills</li>
+      <li style="margin: 0.5rem 0; text-align: justify;">🏆 Earn certificates, recognition, and opportunities for advancement</li>
+      <li style="margin: 0.5rem 0; text-align: justify;">📢 Build confidence and contribute to the tech community</li>
+      <li style="margin: 0.5rem 0; text-align: justify;">🚀 Step into future leadership roles within IEEE</li>
+      <li style="margin: 0.5rem 0; text-align: justify;">🌐 Be a part of national and international IEEE events</li>
+    </ul>
+    <form id="volunteer-form">
+      <div class="form-group">
+        <input type="text" id="full-name" placeholder=" " required aria-required="true">
+        <label for="full-name">Full Name</label>
+      </div>
+      <div class="form-group">
+        <input type="email" id="email" placeholder=" " required aria-required="true">
+        <label for="email">Email</label>
+      </div>
+      <div class="form-group">
+        <input type="tel" id="mobile" placeholder=" " required aria-required="true">
+        <label for="mobile">Mobile Number</label>
+      </div>
+      <div class="form-group">
+        <input type="text" id="course" placeholder=" " required aria-required="true">
+        <label for="course">Course</label>
+      </div>
+      <div class="form-group">
+        <input type="text" id="roll-number" placeholder=" " required aria-required="true">
+        <label for="roll-number">Roll Number</label>
+      </div>
+      <div class="form-group">
+        <textarea id="motivation" placeholder=" " required aria-required="true"></textarea>
+        <label for="motivation">Why do you want to volunteer?</label>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <section id="faq" role="region" aria-labelledby="faq-heading" data-aos="fade-up">
+    <h2 id="faq-heading">Frequently Asked Questions</h2>
+    <div class="faq-item" data-aos="zoom-in">
+      <details>
+        <summary tabindex="0">What is the IEEE Student Chapter?</summary>
+        <p>The IEEE Student Chapter at Your College is a student-led organization under the IEEE global network, focused on fostering technical innovation, leadership, and professional development through workshops, hackathons, and networking events.</p>
+      </details>
+    </div>
+    <div class="faq-item" data-aos="zoom-in" data-aos-delay="100">
+      <details>
+        <summary tabindex="0">How can I join the IEEE Student Chapter?</summary>
+        <p>You can join by signing up for IEEE membership through the official IEEE website and participating in our events or volunteering. Use our Student Branch Code <strong>SBC12345</strong> when registering. Visit our <a href="#membership">Membership</a> section for details.</p>
+      </details>
+    </div>
+    <div class="faq-item" data-aos="zoom-in" data-aos-delay="200">
+      <details>
+        <summary tabindex="0">What benefits do members get?</summary>
+        <p>Members gain access to IEEE Xplore, networking opportunities, scholarships, and exclusive events like CodeFest and AI workshops, fostering both technical and professional growth.</p>
+      </details>
+    </div>
+    <div class="faq-item" data-aos="zoom-in" data-aos-delay="300">
+      <details>
+        <summary tabindex="0">How can I volunteer for events?</summary>
+        <p>Fill out the volunteer form in our <a href="#volunteer">Volunteer</a> section. We welcome enthusiastic students to help organize events and contribute to our community.</p>
+      </details>
+    </div>
+    <div class="faq-item" data-aos="zoom-in" data-aos-delay="300">
+      <details>
+        <summary tabindex="0">Is there any membership fee?</summary>
+        <p>Yes, IEEE has an annual membership fee, which varies for students. However, it provides immense value through resources, access, and opportunities. Student discounts and promotional offers are often available.</p>
+      </details>
+    </div>
+    <div class="faq-item" data-aos="zoom-in" data-aos-delay="200">
+      <details>
+        <summary tabindex="0">Can non-members participate in IEEE events?</summary>
+        <p>Yes, many IEEE events are open to non-members. However, members often receive exclusive benefits like discounts, certificates, or priority access.</p>
+      </details>
+    </div>
+    <div class="faq-item" data-aos="zoom-in" data-aos-delay="200">
+      <details>
+        <summary tabindex="0">What kind of events does the chapter organize?</summary>
+        <p>The chapter organizes coding competitions, technical workshops, guest lectures, hackathons, industrial visits, webinars, soft skills sessions, and fun tech quizzes throughout the year.</p>
+      </details>
+    </div>
+    <div class="faq-item" data-aos="zoom-in" data-aos-delay="300">
+      <details>
+        <summary tabindex="0">Will I get a certificate for participation or volunteering?</summary>
+        <p>Yes, all registered participants and volunteers receive certificates of participation or appreciation, depending on the event and their role.</p>
+      </details>
+    </div>
+    <div class="faq-item" data-aos="zoom-in" data-aos-delay="300">
+      <details>
+        <summary tabindex="0">Whom should I contact for more information?</summary>
+        <p>You can reach out to faculty-coordinator or Chairperson listed on the website or email Chairperson at <strong>aman.krishna1226@gmail.com</strong>. You can also follow our social media handles for updates.</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="social-feed" role="region" aria-labelledby="social-feed-heading" data-aos="fade-up">
+    <h2 id="social-feed-heading">Social Media Feed</h2>
+    <div class="social-grid">
+      <div class="social-post" data-aos="zoom-in">
+        <img src="image/ieeeday1.jpg" alt="IEEE event photo" loading="lazy">
+        <p>Excited for CodeFest 2025! Join us on October 1st & October 3rd for a thrilling hackathon. #IEEE #CodeFest</p>
+        <a href="#" target="_blank" aria-label="View post on social media">View Post</a>
+      </div>
+      <div class="social-post" data-aos="zoom-in" data-aos-delay="100">
+        <img src="image/codethon2.jpg" alt="IEEE workshop photo" loading="lazy">
+        <p>Recap of our Codethon 2025 Event! Amazing turnout and hands-on learning. #IEEE #AI</p>
+        <a href="https://www.instagram.com/p/DIoQmo6BcB5/?igsh=MTFtbHJpZDVreTk2eQ==" target="_blank" aria-label="View post on social media">View Post</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" role="region" aria-labelledby="gallery-heading" data-aos="fade-up">
+    <h2 id="gallery-heading">Gallery</h2>
+    <div class="gallery-grid">
+      <img src="image/ieeeday.jpg" alt="IEEE Event 1 Group Photo" data-aos="zoom-in">
+      <img src="image/codethon2.jpg" alt="IEEE Event 2 Workshop Scene" data-aos="zoom-in" data-aos-delay="100">
+    </div>
+    <div class="lightbox" id="lightbox" role="dialog" aria-label="Image Preview">
+      <img src="" alt="Enlarged gallery image" tabindex="0">
+    </div>
+  </section>
+
+  <section id="blog" role="region" aria-labelledby="blog-heading" data-aos="fade-up">
+    <h2 id="blog-heading">Blog / News</h2>
+    <div class="blog-post" data-aos="zoom-in">
+      <strong>How AI is Transforming the Future</strong>
+      <p>Artificial Intelligence (AI) is no longer just a futuristic concept — it is actively reshaping the way we live, work, and interact with the world. From personalized recommendations and voice assistants to autonomous vehicles and intelligent healthcare diagnostics, AI is enhancing efficiency, decision-making, and human experiences across all sectors. Industries like education, finance, agriculture, and manufacturing are adopting AI-driven solutions to solve complex problems faster and more accurately. With the rise of generative AI, smart robotics, and machine learning, the future will witness smarter cities, intelligent automation, and a more connected world. As this technology continues to evolve, ethical use, transparency, and responsible innovation will be key to ensuring AI benefits humanity on a global scale. For students, learning AI today means building the tools of tomorrow. <em><strong>By Aman Srivastava - May 2025</strong></em></p>
+    </div>
+    <div class="blog-post" data-aos="zoom-in" data-aos-delay="100">
+      <strong>Exploring Emerging Technologies</strong>
+      <p>The world of technology is evolving rapidly, and emerging technologies are reshaping industries, economies, and our daily lives. Innovations such as <strong>Artificial Intelligence (AI), Machine Learning, Quantum Computing, 5G and 6G connectivity, Blockchain, Augmented/Virtual Reality (AR/VR), and Internet of Things (IoT)</strong> are leading this transformation. These technologies are not only creating smarter systems but are also opening new opportunities in healthcare, education, automation, cybersecurity, and sustainable development. For students and future engineers, staying updated with these trends is essential to remain competitive and contribute meaningfully to global innovation. IEEE plays a key role in promoting awareness and research in these fields, making it the perfect platform for curious and ambitious minds. <em><strong>By Aman Srivastava - June 2025</strong></em></p>
+    </div>
+    <div class="blog-post" data-aos="zoom-in" data-aos-delay="100">
+      <strong>Leadership Summit 2025 Highlights</strong>
+      <p>Catch up on all the sessions and strategies discussed at the latest summit with student leaders from across the country. <em>By Rahul Verma - February 2025</em></p>
+    </div>
+  </section>
+
+  <section id="contact" role="region" aria-labelledby="contact-heading" data-aos="fade-up">
+    <h2 id="contact-heading">Contact Us</h2>
+    <p style="max-width: 90%; margin: auto; text-align: center; font-size: 1rem; line-height: 1.7;">
+      We're happy to connect with students, professionals, and organizations. Get in touch for queries, collaborations, or partnerships.
+    </p>
+    <p style="text-align: center; margin: 0.8rem 0;">Email: <a href="aman.krishna1226@gmail.com" style="color: var(--accent-coral); text-decoration: none;">aman.krishna1226@gmail.com</a></p>
+    <p style="text-align: center; margin: 0.8rem 0;">Phone: <a href="tel:+918604966546" style="color: var(--accent-coral); text-decoration: none;">+91-8604966546</a></p>
+    <form id="contact-form">
+      <div class="form-group">
+        <input type="text" id="contact-name" placeholder=" " required aria-required="true">
+        <label for="contact-name">Your Name</label>
+      </div>
+      <div class="form-group">
+        <input type="email" id="contact-email" placeholder=" " required aria-required="true">
+        <label for="contact-email">Your Email</label>
+      </div>
+      <div class="form-group">
+        <textarea id="contact-message" placeholder=" " required aria-required="true"></textarea>
+        <label for="contact-message">Your Message</label>
+      </div>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <footer role="contentinfo">
+    <div class="footer-content">
+      <div>
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#membership">Membership</a></li>
+          <li><a href="#volunteer">Volunteer</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#social-feed">Social Feed</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Reach Out</h3>
+        <p>Email: <a href="mailto:ieee@yourcollege.edu">aman.krishna1226@gmail.com</a></p>
+        <p>Phone: <a href="tel:+91XXXXXXXXXX">+91-8604966546</a></p>
+        <p>Student Branch Code: <strong>STB60207287</strong></p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2025 IEEE Student Chapter | MUIT @ Lucknow. All rights reserved.
+    </div>
+  </footer>
+
+  <button id="back-to-top" style="display: none; position: fixed; bottom: 20px; right: 20px; background: var(--primary-blue); color: var(--text-light); border: none; padding: 0.8rem; border-radius: 50%; cursor: pointer; box-shadow: var(--shadow); font-size: 1.2rem;" aria-label="Back to Top">↑</button>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+
+    // Preloader
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      preloader.classList.add('fade-out');
+      setTimeout(() => {
+        preloader.style.display = 'none';
+      }, 500);
+    });
+
+    // Hamburger Menu
+    const hamburger = document.querySelector('.hamburger');
+    const navContainer = document.querySelector('.nav-container');
+    hamburger.addEventListener('click', () => {
+      navContainer.classList.toggle('active');
+      navContainer.classList.toggle('collapsed');
+      hamburger.textContent = navContainer.classList.contains('active') ? '✕' : '☰';
+      hamburger.setAttribute('aria-expanded', navContainer.classList.contains('active'));
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.nav-container a').forEach(link => {
+      link.addEventListener('click', () => {
+        navContainer.classList.remove('active');
+        navContainer.classList.add('collapsed');
+        hamburger.textContent = '☰';
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Form submission handling with validation and error handling
+    document.querySelectorAll('form').forEach(form => {
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const button = form.querySelector('button');
+        const email = form.querySelector('input[type="email"]');
+        
+        try {
+          if (email && !email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+            throw new Error('Please enter a valid email address.');
+          }
+
+          button.disabled = true;
+          button.textContent = 'Submitting...';
+          await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate async operation
+          alert('Thank you for your response!');
+          form.reset();
+        } catch (error) {
+          alert(error.message || 'An error occurred during submission. Please try again.');
+        } finally {
+          button.disabled = false;
+          button.textContent = form.id === 'contact-form' ? 'Send' : 'Submit';
+        }
+      });
+    });
+
+    // Gallery lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    document.querySelectorAll('.gallery-grid img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.add('show');
+        lightboxImg.focus();
+      });
+    });
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('show');
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('show')) {
+        lightbox.classList.remove('show');
+      }
+    });
+
+    // Hero slider
+    const slider = document.querySelector('.hero-slider');
+    const slides = document.querySelectorAll('.hero-slide');
+    const controls = document.querySelectorAll('.slider-controls button');
+    const prevBtn = document.querySelector('.slider-nav.prev');
+    const nextBtn = document.querySelector('.slider-nav.next');
+    let currentSlide = 0;
+    let autoSlideInterval;
+
+    function goToSlide(index) {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (index + slides.length) % slides.length;
+      slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+      slides[currentSlide].classList.add('active');
+      controls.forEach(btn => btn.classList.remove('active'));
+      controls[currentSlide].classList.add('active');
+    }
+
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(() => {
+        goToSlide(currentSlide + 1);
+      }, 6000);
+    }
+
+    function stopAutoSlide() {
+      clearInterval(autoSlideInterval);
+    }
+
+    controls.forEach(btn => {
+      btn.addEventListener('click', () => {
+        stopAutoSlide();
+        goToSlide(parseInt(btn.dataset.slide));
+        startAutoSlide();
+      });
+    });
+
+    prevBtn.addEventListener('click', () => {
+      stopAutoSlide();
+      goToSlide(currentSlide - 1);
+      startAutoSlide();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      stopAutoSlide();
+      goToSlide(currentSlide + 1);
+      startAutoSlide();
+    });
+
+    slider.addEventListener('mouseenter', stopAutoSlide);
+    slider.addEventListener('mouseleave', startAutoSlide);
+
+    startAutoSlide();
+
+    // Back-to-top button
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
