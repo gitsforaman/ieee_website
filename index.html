@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="IEEE Student Chapter at Your College - Inspiring innovation and empowering students through technology and leadership.">
-  <meta name="keywords" content="IEEE, student chapter, technology, engineering, innovation, Your College">
-  <meta property="og:title" content="IEEE Student Chapter - Your College">
+  <meta name="description" content="IEEE Student Chapter at Maharishi University of Information Technology - Inspiring innovation and empowering students through technology and leadership.">
+  <meta name="keywords" content="IEEE, student chapter, technology, engineering, innovation, MUIT">
+  <meta property="og:title" content="IEEE Student Chapter - MUIT">
   <meta property="og:description" content="Join our vibrant community of tech enthusiasts and future leaders.">
   <meta property="og:image" content="https://yourcollege.edu/ieee-logo.jpg">
   <meta property="og:url" content="https://yourcollege.edu/ieee">
-  <title>IEEE Student Chapter</title>
+  <title>IEEE Student Chapter - MUIT</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <style>
     :root {
       --primary-blue: #1E40AF;
@@ -73,6 +74,35 @@
       100% { transform: rotate(360deg); }
     }
 
+    /* Volunteer button styles */
+    .volunteer-btn-container {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .volunteer-btn {
+      background: var(--accent-coral);
+      color: var(--text-light);
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+    }
+
+    .volunteer-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      background: #EC4899;
+    }
+
+    /* Rest of your existing CSS remains the same */
     header {
       background: black;
       color: var(--text-light);
@@ -501,6 +531,7 @@
       max-width: 100%;
       margin: 1.5rem auto;
       padding: 0 1rem;
+      position: relative;
     }
 
     .form-group {
@@ -1034,7 +1065,7 @@
   <section id="about" role="region" aria-labelledby="about-heading" data-aos="fade-up">
     <h2 id="about-heading">About Us</h2>
     <p style="max-width: 90%; margin: auto; font-size: 1rem; line-height: 1.7; color: #333; text-align: center;">
-      The IEEE Student Chapter at Your College is a vibrant community of tech enthusiasts, innovators, and future leaders.
+      The IEEE Student Chapter at Maharishi University of Information Technology is a vibrant community of tech enthusiasts, innovators, and future leaders.
       We provide a platform for students to explore emerging technologies, develop leadership skills, and collaborate
       on impactful projects. Through workshops, hackathons, and expert talks, we strive to inspire innovation and nurture
       excellence.
@@ -1067,7 +1098,7 @@
         <p>Dean of Engineering</p>
         <p>MSOET @ MUIT, Lucknow</p>
         <p class="email">Email: dean.eng@muit.in</p>
-        <p>The Dean of our institution serves as a key pillar of guidance and support for the IEEE Student Chapter. With a deep commitment to academic excellence and innovation, the Dean ensures that all chapter activities align with the institution’s vision and educational standards. Their leadership helps in fostering a culture of research, collaboration, and technical growth among students. By offering strategic direction and administrative support, the Dean plays a crucial role in the smooth functioning and success of various events, initiatives, and partnerships.</p></strong>
+        <p>The Dean of our institution serves as a key pillar of guidance and support for the IEEE Student Chapter. With a deep commitment to academic excellence and innovation, the Dean ensures that all chapter activities align with the institution's vision and educational standards. Their leadership helps in fostering a culture of research, collaboration, and technical growth among students. By offering strategic direction and administrative support, the Dean plays a crucial role in the smooth functioning and success of various events, initiatives, and partnerships.</p></strong>
       </div>
       <div class="team-card" data-aos="zoom-in">
         <img src="image/dean2.jpg" alt="Portrait of Dr. Rajesh Kumar, Dean of Engineering" loading="lazy">
@@ -1089,7 +1120,7 @@
         <p>Asst. Professor & IEEE Student Branch faculty-coordinator</p>
         <p class="email">Email: er.preetinaval09@gmail.com</p>
         <p class="member-id">Member ID: 101336081</p>
-    <p>The Faculty Counselor acts as the primary academic mentor and guide for the IEEE Student Chapter. Appointed by the institution and recognized by IEEE, the Faculty Counselor serves as a bridge between the student members and the IEEE organization. They provide continuous guidance, ensure that the chapter operates in accordance with IEEE policies, and support students in organizing impactful technical and professional events. The Faculty Counselor plays a key role in nurturing leadership, promoting innovation, and encouraging active student participation in IEEE activities. Their dedication and mentorship are instrumental in the chapter’s growth and success.</p></strong>
+    <p>The Faculty Counselor acts as the primary academic mentor and guide for the IEEE Student Chapter. Appointed by the institution and recognized by IEEE, the Faculty Counselor serves as a bridge between the student members and the IEEE organization. They provide continuous guidance, ensure that the chapter operates in accordance with IEEE policies, and support students in organizing impactful technical and professional events. The Faculty Counselor plays a key role in nurturing leadership, promoting innovation, and encouraging active student participation in IEEE activities. Their dedication and mentorship are instrumental in the chapter's growth and success.</p></strong>
       </div>
     </div>
   </section>
@@ -1103,7 +1134,7 @@
         <p>Executive Officer - Chairperson</p>
         <p class="email">Email: aman.krishna1226@gmail.com</p>
         <p class="member-id">Member ID: 101124172</p>
-        <p>The Chairperson leads the IEEE Student Chapter with a clear vision and strong leadership. They oversee all chapter activities and ensure every initiative aligns with IEEE’s mission and goals.</p></strong>
+        <p>The Chairperson leads the IEEE Student Chapter with a clear vision and strong leadership. They oversee all chapter activities and ensure every initiative aligns with IEEE's mission and goals.</p></strong>
       </div>
       <div class="team-card" data-aos="zoom-in" data-aos-delay="100" aria-label="Dr. Smith, Faculty Coordinator, Member ID IEEE2025-003">
         <img src="image/manmohan.jpg" alt="Portrait of Dr. Smith, Faculty Coordinator" loading="lazy">
@@ -1119,7 +1150,7 @@
         <p>Secretary</p>
         <p class="email">Email: purnimayadav6307266638@gmail.com</p>
         <p class="member-id">Member ID: 101328452</p>
-        <p>The Secretary manages communications, maintains records, and organizes meetings. They play a key role in ensuring the chapter’s workflow remains efficient and well-documented.</p>
+        <p>The Secretary manages communications, maintains records, and organizes meetings. They play a key role in ensuring the chapter's workflow remains efficient and well-documented.</p>
       </div>
       <div class="team-card" data-aos="zoom-in" data-aos-delay="100" aria-label="Dr. Smith, Faculty Coordinator, Member ID IEEE2025-003">
         <img src="image/ayush.jpg" alt="Portrait of Dr. Smith, Faculty Coordinator" loading="lazy">
@@ -1127,7 +1158,7 @@
         <p>Webmaster</p>
         <p class="email">Email: chaurasiyavinod96@gmail.com</p>
         <p class="member-id">Member ID: 101172349</p>
-        <p>The Webmaster designs and updates the chapter’s digital platforms. They ensure the chapter’s activities and achievements are well-presented and accessible online.</p></strong>
+        <p>The Webmaster designs and updates the chapter's digital platforms. They ensure the chapter's activities and achievements are well-presented and accessible online.</p></strong>
       </div>
       <div class="team-card" data-aos="zoom-in" data-aos-delay="100" aria-label="Dr. Smith, Faculty Coordinator, Member ID IEEE2025-003">
         <img src="image/sumit.jpg" alt="Portrait of Dr. Smith, Faculty Coordinator" loading="lazy">
@@ -1172,14 +1203,14 @@
     <div class="event-card" data-aos="zoom-in" data-aos-delay="100">
       <strong>Codethon 2025</strong><br>
       Date: 16th & 17th April, 2025<br>
-      <p>Codethon 2025 is a flagship coding hackathon organized by our IEEE Student Chapter, designed to ignite innovation, problem-solving, and technical excellence among budding developers. This 24-hour coding challenge brings together talented students from diverse backgrounds to collaborate, compete, and create impactful solutions to real-world problems. With exciting themes, mentorship sessions, and industry interaction, Codethon 2025 aims to foster creativity, teamwork, and hands-on experience in software development. It is more than a competition — it’s a celebration of code, collaboration, and community.</p>
+      <p>Codethon 2025 is a flagship coding hackathon organized by our IEEE Student Chapter, designed to ignite innovation, problem-solving, and technical excellence among budding developers. This 24-hour coding challenge brings together talented students from diverse backgrounds to collaborate, compete, and create impactful solutions to real-world problems. With exciting themes, mentorship sessions, and industry interaction, Codethon 2025 aims to foster creativity, teamwork, and hands-on experience in software development. It is more than a competition — it's a celebration of code, collaboration, and community.</p>
     </div>
   </section>
 
   <section id="membership" role="region" aria-labelledby="membership-heading" data-aos="fade-up">
     <h2 id="membership-heading">Membership</h2>
     <p style="max-width: 90%; margin: auto; text-align: justify; font-size: 1rem; line-height: 1.7;">
-     Becoming an IEEE member connects you to the world’s largest professional organization dedicated to advancing technology. IEEE membership provides access to a global network of over 400,000 engineers, researchers, and technology leaders. Students gain opportunities to participate in conferences, workshops, technical societies, and exclusive competitions like hackathons and project expos. Members receive access to IEEE Xplore digital library, cutting-edge research papers, career resources, and technical publications. Student members also benefit from leadership development, professional certifications, discounted IEEE events, scholarships, and the chance to collaborate with like-minded peers globally. Membership is open to students from all branches who are passionate about innovation, technology, and learning. By joining IEEE, you not only enhance your technical knowledge but also strengthen your career prospects and become part of a prestigious global community committed to advancing engineering and technology for humanity.
+     Becoming an IEEE member connects you to the world's largest professional organization dedicated to advancing technology. IEEE membership provides access to a global network of over 400,000 engineers, researchers, and technology leaders. Students gain opportunities to participate in conferences, workshops, technical societies, and exclusive competitions like hackathons and project expos. Members receive access to IEEE Xplore digital library, cutting-edge research papers, career resources, and technical publications. Student members also benefit from leadership development, professional certifications, discounted IEEE events, scholarships, and the chance to collaborate with like-minded peers globally. Membership is open to students from all branches who are passionate about innovation, technology, and learning. By joining IEEE, you not only enhance your technical knowledge but also strengthen your career prospects and become part of a prestigious global community committed to advancing engineering and technology for humanity.
     </p>
     <ul style="max-width: 90%; margin: 1.5rem auto; list-style: none; text-align: center;">
       <li style="margin: 0.5rem 0; text-align: justify;"><strong>🌐 Global Networking –</strong> Connect with over 400,000 members worldwide across industries, academia, and research.</li>
@@ -1201,7 +1232,7 @@
   <section id="volunteer" role="region" aria-labelledby="volunteer-heading" data-aos="fade-up">
     <h2 id="volunteer-heading">Become a Volunteer</h2>
     <p style="max-width: 90%; margin: auto; text-align: justify; font-size: 1rem; line-height: 1.7;">
-      Volunteering with the IEEE Student Chapter is more than just a role — it’s an opportunity to be part of a vibrant, innovative, and impactful community. As a volunteer, you’ll play an active part in organizing technical events, seminars, workshops, and social outreach programs. It allows you to develop essential soft skills like communication, leadership, and teamwork while gaining practical exposure to event planning and execution. Whether you’re passionate about technology, design, public relations, or management, volunteering gives you the platform to explore your interests and grow both personally and professionally. Volunteers are recognized for their efforts through certificates, recommendation letters, and exclusive IEEE opportunities.
+      Volunteering with the IEEE Student Chapter is more than just a role — it's an opportunity to be part of a vibrant, innovative, and impactful community. As a volunteer, you'll play an active part in organizing technical events, seminars, workshops, and social outreach programs. It allows you to develop essential soft skills like communication, leadership, and teamwork while gaining practical exposure to event planning and execution. Whether you're passionate about technology, design, public relations, or management, volunteering gives you the platform to explore your interests and grow both personally and professionally. Volunteers are recognized for their efforts through certificates, recommendation letters, and exclusive IEEE opportunities.
     </p>
     <ul style="max-width: 90%; margin: 1.5rem auto; list-style: none; text-align: center;">
       <li style="margin: 0.5rem 0; text-align: justify;">🤝 Work closely with peers, faculty, and industry professionals</li>
@@ -1212,33 +1243,12 @@
       <li style="margin: 0.5rem 0; text-align: justify;">🚀 Step into future leadership roles within IEEE</li>
       <li style="margin: 0.5rem 0; text-align: justify;">🌐 Be a part of national and international IEEE events</li>
     </ul>
-    <form id="volunteer-form">
-      <div class="form-group">
-        <input type="text" id="full-name" placeholder=" " required aria-required="true">
-        <label for="full-name">Full Name</label>
-      </div>
-      <div class="form-group">
-        <input type="email" id="email" placeholder=" " required aria-required="true">
-        <label for="email">Email</label>
-      </div>
-      <div class="form-group">
-        <input type="tel" id="mobile" placeholder=" " required aria-required="true">
-        <label for="mobile">Mobile Number</label>
-      </div>
-      <div class="form-group">
-        <input type="text" id="course" placeholder=" " required aria-required="true">
-        <label for="course">Course</label>
-      </div>
-      <div class="form-group">
-        <input type="text" id="roll-number" placeholder=" " required aria-required="true">
-        <label for="roll-number">Roll Number</label>
-      </div>
-      <div class="form-group">
-        <textarea id="motivation" placeholder=" " required aria-required="true"></textarea>
-        <label for="motivation">Why do you want to volunteer?</label>
-      </div>
-      <button type="submit">Submit</button>
-    </form>
+    
+    <div class="volunteer-btn-container">
+      <button class="volunteer-btn" onclick="window.open('https://docs.google.com/forms/d/e/YOUR_GOOGLE_FORM_ID/viewform', '_blank')">
+        Join as Volunteer
+      </button>
+    </div>
   </section>
 
   <section id="faq" role="region" aria-labelledby="faq-heading" data-aos="fade-up">
@@ -1264,7 +1274,7 @@
     <div class="faq-item" data-aos="zoom-in" data-aos-delay="300">
       <details>
         <summary tabindex="0">How can I volunteer for events?</summary>
-        <p>Fill out the volunteer form in our <a href="#volunteer">Volunteer</a> section. We welcome enthusiastic students to help organize events and contribute to our community.</p>
+        <p>Click the "Join as Volunteer" button in our <a href="#volunteer">Volunteer</a> section to fill out our Google Form. We welcome enthusiastic students to help organize events and contribute to our community.</p>
       </details>
     </div>
     <div class="faq-item" data-aos="zoom-in" data-aos-delay="300">
@@ -1362,6 +1372,7 @@
         <textarea id="contact-message" placeholder=" " required aria-required="true"></textarea>
         <label for="contact-message">Your Message</label>
       </div>
+      <div id="contact-message" class="form-message" style="display: none;"></div>
       <button type="submit">Send</button>
     </form>
   </section>
@@ -1403,6 +1414,11 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <script>
+    // Initialize EmailJS with your User ID
+    document.addEventListener('DOMContentLoaded', function() {
+      emailjs.init('YOUR_USER_ID_HERE'); // Replace with your actual EmailJS user ID
+    });
+
     // Initialize AOS
     AOS.init({
       duration: 800,
@@ -1439,30 +1455,77 @@
       });
     });
 
-    // Form submission handling with validation and error handling
-    document.querySelectorAll('form').forEach(form => {
-      form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const button = form.querySelector('button');
-        const email = form.querySelector('input[type="email"]');
-        
-        try {
-          if (email && !email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-            throw new Error('Please enter a valid email address.');
-          }
-
-          button.disabled = true;
-          button.textContent = 'Submitting...';
-          await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate async operation
-          alert('Thank you for your response!');
-          form.reset();
-        } catch (error) {
-          alert(error.message || 'An error occurred during submission. Please try again.');
-        } finally {
-          button.disabled = false;
-          button.textContent = form.id === 'contact-form' ? 'Send' : 'Submit';
+    // Form validation function
+    function validateForm(form) {
+      let isValid = true;
+      form.querySelectorAll('[required]').forEach(input => {
+        if (!input.value.trim()) {
+          input.style.borderColor = 'red';
+          isValid = false;
+        } else {
+          input.style.borderColor = '';
         }
       });
+      
+      // Email validation if email field exists
+      const email = form.querySelector('input[type="email"]');
+      if (email && !email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+        email.style.borderColor = 'red';
+        isValid = false;
+      } else if (email) {
+        email.style.borderColor = '';
+      }
+      
+      return isValid;
+    }
+
+    // Contact form submission
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const button = form.querySelector('button');
+      const messageEl = document.getElementById('contact-message');
+      
+      try {
+        // Validate form
+        if (!validateForm(form)) {
+          throw new Error('Please fill all required fields correctly.');
+        }
+
+        button.disabled = true;
+        button.innerHTML = 'Sending <span class="loading-spinner"></span>';
+
+        // Prepare template parameters
+        const templateParams = {
+          from_name: form.querySelector('#contact-name').value,
+          from_email: form.querySelector('#contact-email').value,
+          message: form.querySelector('#contact-message').value
+        };
+
+        // Send email using EmailJS
+        const response = await emailjs.send(
+          'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+          'YOUR_CONTACT_TEMPLATE_ID', // Replace with your contact template ID
+          templateParams
+        );
+
+        if (response.status === 200) {
+          messageEl.textContent = 'Thank you for your message! We will get back to you soon.';
+          messageEl.className = 'form-message success';
+          messageEl.style.display = 'block';
+          form.reset();
+        } else {
+          throw new Error('Failed to send message. Please try again later.');
+        }
+      } catch (error) {
+        messageEl.textContent = error.message || 'An error occurred during submission. Please try again.';
+        messageEl.className = 'form-message error';
+        messageEl.style.display = 'block';
+        console.error('Form submission error:', error);
+      } finally {
+        button.disabled = false;
+        button.textContent = 'Send';
+      }
     });
 
     // Gallery lightbox
